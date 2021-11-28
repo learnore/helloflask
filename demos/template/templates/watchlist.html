@@ -1,3 +1,4 @@
+{# shen - 在 Jinja2 中，可使用 '.' 获取变量属性，也可以[''] 如：user.name 等同于 user['name'] #}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,18 +6,22 @@
     <title>{{ user.username }}'s Watchlist</title>
 </head>
 <body>
+{# shen - HTML 实体查询大全：https://dev.w3.org/html5/html-author/charref #}
 <a href="{{ url_for('index') }}">&larr; Return</a>
+{# <a href="{{ url_for('index') }}">&twoheadleftarrow; Return</a> #}
 <h2>{{ user.username }}</h2>
 {% if user.bio %}
     <i>{{ user.bio }}</i>
 {% else %}
     <i>This user has not provided a bio.</i>
+{# shen - 末尾的 endif 不可以省略 #}
 {% endif %}
 {# Below is the movie list (this is comment) #}
-<h5>{{ user.username }}'s Watchlist ({{ movies|length }}):</h5>
+<h5>{{ user['username'] }}'s Watchlist ({{ movies|length }}):</h5>
 <ul>
     {% for movie in movies %}
-    <li>{{ movie.name }} - {{ movie.year }}</li>
+        <li>{{ movie.name}} - {{ movie['year'] }}</li>
+    {# shen - 末尾的 endfor 不可以省略 #}
     {% endfor %}
 </ul>
 </body>

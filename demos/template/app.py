@@ -15,7 +15,7 @@ app.jinja_env.lstrip_blocks = True
 
 user = {
     'username': 'Grey Li',
-    'bio': 'A boy who loves movies and music.',
+    'bio': 'A boy who loves movies and music...',
 }
 
 movies = [
@@ -34,6 +34,8 @@ movies = [
 
 @app.route('/watchlist')
 def watchlist():
+    # shen - 等号左边的 user 表示传入模板的变量名称
+    # shen - 等号右边的 user 要传入的对象
     return render_template('watchlist.html', user=user, movies=movies)
 
 
