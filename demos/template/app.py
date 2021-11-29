@@ -45,10 +45,29 @@ def index():
 
 
 # register template context handler
+# shen - app.context_processor 装饰器，调用任意一个前端模板的时候，可以用来注册模板上下文处理函数
+# 方法一 ===========================
 @app.context_processor
 def inject_info():
     foo = 'I am foo.'
-    return dict(foo=foo)  # equal to: return {'foo': foo}
+    shen1 = 'I`m shen1'
+    return dict(foo=foo, shen1=shen1)  # equal to: return {'foo': foo}
+# 方法一 ===========================
+
+
+# 方法二 ===========================
+def inject_shen2():
+    shen2 = 'I`m shen2'
+    return dict(shen2=shen2)
+
+
+app.context_processor(inject_shen2)
+# 方法二 ===========================
+
+
+# 方法三 ===========================
+app.context_processor(lambda: dict(shen3='I`m shen3'))
+# 方法三 ===========================
 
 
 # register template global function

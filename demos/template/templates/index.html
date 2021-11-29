@@ -2,11 +2,19 @@
 {% from 'macros.html' import qux %}
 
 {% block content %}
+{# set 标签 #}
 {% set name='baz' %}
 <h1>Template</h1>
 <ul>
     <li><a href="{{ url_for('watchlist') }}">Watchlist</a></li>
-    <li>Filter: {{ foo|musical }}</li>
+    <ul>
+        {# shen - app.context_processor 装饰器，完成统一传入变量工作 #}
+        <li>Filter: {{ foo|musical }}</li>
+        <li>Filter: {{ shen1|musical }}</li>
+        <li>Filter: {{ shen2|musical }}</li>
+        <li>Filter: {{ shen3|musical }}</li>
+    </ul>
+
     <li>Global: {{ bar() }}</li>
     <li>Test: {% if name is baz %}I am baz.{% endif %}</li>
     <li>Macro: {{ qux(amount=1) }}</li>
