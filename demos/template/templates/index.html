@@ -7,18 +7,30 @@
 <h1>Template</h1>
 <ul>
     <li><a href="{{ url_for('watchlist') }}">Watchlist</a></li>
+
+    {# shen - app.context_processor 装饰器，完成统一传入变量工作 #}
+    <li>context_processor</li>
     <ul>
-        {# shen - app.context_processor 装饰器，完成统一传入变量工作 #}
         <li>Filter: {{ foo|musical }}</li>
         <li>Filter: {{ shen1|musical }}</li>
         <li>Filter: {{ shen2|musical }}</li>
         <li>Filter: {{ shen3|musical }}</li>
     </ul>
 
-    <li>Global: {{ bar() }}</li>
+    {# shen - template_global + add_template_global 全局函数装饰器 #}
+    <li>template_global + add_template_global</li>
+    <ul>
+        <li>Global: {{ bar() }}</li>
+        <li>Global: {{ bar_shen() }}</li>
+    </ul>
     <li>Test: {% if name is baz %}I am baz.{% endif %}</li>
     <li>Macro: {{ qux(amount=1) }}</li>
     <li><a href="{{ url_for('watchlist_with_static') }}">Watchlist with image and styles.</a></li>
     <li><a href="{{ url_for('just_flash') }}">Flash something</a></li>
+    {# TODO 用法不正确 <li><a href="{{ get_flashed_message('hi,shen') }}">Flash something - shen</a></li>#}
+
+    <h2>shen</h2>
+    <h3>lipsum 生成随机文本，5 段 HTML，每段包含 5-20 个单词</h3>
+    <ul>{{ lipsum(n=5, html=True, min=5, max=20) }}</ul>
 </ul>
 {% endblock %}

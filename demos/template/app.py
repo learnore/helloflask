@@ -44,36 +44,50 @@ def index():
     return render_template('index.html')
 
 
+"""
 # register template context handler
 # shen - app.context_processor 装饰器，调用任意一个前端模板的时候，可以用来注册模板上下文处理函数
-# 方法一 ===========================
+"""
+# context_processor I ===========================
 @app.context_processor
 def inject_info():
     foo = 'I am foo.'
     shen1 = 'I`m shen1'
     return dict(foo=foo, shen1=shen1)  # equal to: return {'foo': foo}
-# 方法一 ===========================
+# I ===========================
 
 
-# 方法二 ===========================
+# context_processor II ===========================
 def inject_shen2():
     shen2 = 'I`m shen2'
     return dict(shen2=shen2)
 
 
 app.context_processor(inject_shen2)
-# 方法二 ===========================
+# II ===========================
 
 
-# 方法三 ===========================
+# context_processor III ===========================
 app.context_processor(lambda: dict(shen3='I`m shen3'))
-# 方法三 ===========================
+# III ===========================
 
 
+"""
 # register template global function
+# app.template_global - 仅能注册全局函数 / 装饰器直接将函数注册为模板全局函数
+"""
+# template_global I ===========================
 @app.template_global()
 def bar():
     return 'I am bar.'
+# I ===========================
+
+
+# NOT template_global BUT add_template_global II ===========================
+def bar_shen():
+    return 'I am shen-bar.'
+app.add_template_global(bar_shen)
+# II ===========================
 
 
 # register template filter
