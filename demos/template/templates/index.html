@@ -9,7 +9,7 @@
     <li><a href="{{ url_for('watchlist') }}">Watchlist</a></li>
 
     {# shen - app.context_processor 装饰器，完成统一传入变量工作 #}
-    <li>context_processor</li>
+    <li>@app.context_processor + app.context_processor(your_function) + app.context_processor(lambda: )q</li>
     <ul>
         <li>Filter: {{ foo|musical }}</li>
         <li>Filter: {{ shen1|title }}</li>
@@ -23,12 +23,17 @@
     </ul>
 
     {# shen - template_global + add_template_global 全局函数装饰器 #}
-    <li>template_global + add_template_global</li>
+    <li>@app.template_global() + app.add_template_global(your_function)</li>
     <ul>
         <li>Global: {{ bar() }}</li>
         <li>Global: {{ bar_shen() }}</li>
     </ul>
-    <li>Test: {% if name is baz %}I am baz.{% endif %}</li>
+
+    <li>@app.template_test() + app.add_template_test(your_function)</li>
+    <ul>
+        <li>Test: {% if name is baz %}I am baz.{% endif %}</li>
+    </ul>
+
     <li>Macro: {{ qux(amount=1) }}</li>
     <li><a href="{{ url_for('watchlist_with_static') }}">Watchlist with image and styles.</a></li>
     <li><a href="{{ url_for('just_flash') }}">Flash something</a></li>

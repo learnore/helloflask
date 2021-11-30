@@ -61,8 +61,6 @@ def inject_info():
 def inject_shen2():
     shen2 = 'I`m shen2'
     return dict(shen2=shen2)
-
-
 app.context_processor(inject_shen2)
 # II ===========================
 
@@ -100,8 +98,10 @@ def musical(s):
     return s + Markup('<p>shen</p>')
 
 
-
+"""
 # register template test
+# @app.template_test() / app.add_template_test(your_test_function)
+"""
 @app.template_test()
 def baz(n):
     if n == 'baz':
