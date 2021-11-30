@@ -12,9 +12,14 @@
     <li>context_processor</li>
     <ul>
         <li>Filter: {{ foo|musical }}</li>
-        <li>Filter: {{ shen1|musical }}</li>
-        <li>Filter: {{ shen2|musical }}</li>
-        <li>Filter: {{ shen3|musical }}</li>
+        <li>Filter: {{ shen1|title }}</li>
+        <li>Filter: {{ shen2|length }}</li>
+        <li>Filter: {{ shen3|upper }}</li>
+
+        {# 用 filter 和 endfilter 用于一部分模板数据 #}
+        {% filter upper %}
+            <li>Filter: {{ shen3|musical }}</li>
+        {% endfilter %}
     </ul>
 
     {# shen - template_global + add_template_global 全局函数装饰器 #}

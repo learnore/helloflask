@@ -90,10 +90,15 @@ app.add_template_global(bar_shen)
 # II ===========================
 
 
+"""
 # register template filter
+# @app.template_filter() / app.add_template_filter(your_filter_function)
+"""
 @app.template_filter()
 def musical(s):
-    return s + Markup(' &#9835;')
+    # return s + Markup(' &#9835;') # &#9835; 音乐符号
+    return s + Markup('<p>shen</p>')
+
 
 
 # register template test
