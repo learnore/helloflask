@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    :author: Grey Li (李辉)
+    :author: Grey Li (李辉) & SHEN
     :url: http://greyli.com
     :copyright: © 2018 Grey Li
     :license: MIT, see LICENSE for more details.
